@@ -6,15 +6,16 @@
   height: 40vmin;
   pointer-events: none;
 }
+.App_data{
+  border-radius: 2px solid red;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-.card{
-     width: 18rem;
-}
+
 
 .App-header {
   background-color: #282c34;

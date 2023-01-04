@@ -20,15 +20,37 @@ const App =()=> {
 
   return (
     <div className="App">
-      <h3>Redux</h3>
-      <button onClick={()=>dispatch(fetchPosts())}> Fetch Post</button>
+
+      <div className='container py-4'>
+      
+      <button onClick={()=>dispatch(fetchPosts())}> Data </button>
+     
+      
+        {/* <div className='App_data'> */}
+        <div className='row'>
       {!loading ? (
-        posts.map((posts:Data)=> <h5>{posts.body}</h5>)
-      ):(
+        posts.map((posts:Data)=> (
+<div className='col-md-3 md-3' key={posts.id}>
+  <div className='card'>
+  <div className='card-body'>
+
+        <h6>#{posts.id}{ posts.title}</h6>
+        <p>{posts.body}</p>
+        </div>
+        </div>
+        </div>
+
+        
+        )
+      )):(
         <h3>Loading...</h3>
       )}
-      
-    </div>
+      </div>
+      </div>
+      {/* </div> */}
+      </div>
+    
+    
   );
 }
 
