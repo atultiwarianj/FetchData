@@ -2,22 +2,22 @@ import * as types from "../action-type/index"
 import axios from "axios";
 import { Dispatch } from "redux";
 
-interface Data{
+interface IProps{
         userId: number,
         id: number,
         title: string,
         body: string
 }
-
+export type Action = IProps
 
 const fetchPostStart =()=>({
     type: types.FETCH_POST_START,
 });
-const fetchPostSuccess=(posts:Data)=>({
+const fetchPostSuccess=(posts:Action)=>({
     type: types.FETCH_POST_SUCCESS,
     payload: posts,
 });
-const fetchPostFail =(error:Data)=>({
+const fetchPostFail =(error:Action)=>({
     type: types.FETCH_POST_FAIL,
     payload: error,
 });
@@ -31,7 +31,7 @@ export const fetchPosts = ()=>{
         .then((response)=>{
             const posts = (response.data.slice(0, 30));
             dispatch(fetchPostSuccess(posts));
-            console.log(posts.slice(0, 5));
+            // console.log(posts.slice(0, 5));
         })
         .catch((error)=>{
             dispatch(fetchPostFail(error.message));

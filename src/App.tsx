@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import { fetchPosts } from './state/action';
+import { fetchPosts } from './Store/action';
 import { useDispatch, useSelector } from 'react-redux';
-import { State } from './state/reducers';
+import { State } from './Store/reducers';
 import { Dispatch } from 'redux';
+import Pagination from './component/Pagination';
+import Card from './component/Card';
 
-interface Data{
+interface IProps {
   userId: number,
   id: number,
   title: string,
@@ -13,44 +15,52 @@ interface Data{
 }
 
 
-const App =()=> {
-  const { posts, loading } =useSelector((state:State)=> ({...state.data}));
+const App = () => {
+  const [showPerPage, setShowPerPage] = useState(8)
+  const [pagination, setPagination] = useState({
+    start: 0,
+    end: showPerPage,
+  });
+  const { posts, loading } = useSelector((state: State) => ({ ...state.data }));
 
-  const dispatch:Dispatch<any>=useDispatch();
+  const onPaginationChange = (startValue: number, endValue: number) => {
+    // console.log(startValue, endValue)
+  }
+
+
+  const dispatch: Dispatch<any> = useDispatch();
+  useEffect(() => {
+    dispatch(fetchPosts())
+  }, [])
 
   return (
     <div className="App">
-
       <div className='container py-4'>
-      
-      <button onClick={()=>dispatch(fetchPosts())}> Data </button>
-     
-      
-        {/* <div className='App_data'> */}
+        {/* <button className="btn btn-primary"
+          onClick={() => dispatch(fetchPosts())}> Show Data </button> */}
         <div className='row'>
-      {!loading ? (
-        posts.map((posts:Data)=> (
-<div className='col-md-3 md-3' key={posts.id}>
-  <div className='card'>
-  <div className='card-body'>
+          {
+            posts.slice(pagination.start, pagination.end).map((posts: IProps,) => {
+              return <>
 
-        <h6>#{posts.id}{ posts.title}</h6>
-        <p>{posts.body}</p>
-        </div>
-        </div>
-        </div>
+                <Card userId={posts.userId}
+                  id={posts.id}
+                  title={posts.title}
+                  body={posts.body}
+                />
+              </>
+            }
+            )}
 
-        
-        )
-      )):(
-        <h3>Loading...</h3>
-      )}
-      </div>
+          <Pagination showPerPage={showPerPage}
+          // onPaginationChange={onPaginationChange }
+          />
+        </div>
       </div>
       {/* </div> */}
-      </div>
-    
-    
+    </div>
+
+
   );
 }
 
