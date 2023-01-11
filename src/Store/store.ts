@@ -9,3 +9,5 @@ export const store =createStore(
     rootReducer,
     applyMiddleware(...[thunk])
     )
+    // console.log("Store", rootReducer)
+

@@ -16,7 +16,26 @@
   }
 }
 
+.Pagination {
+  display: inline-flex;
+  list-style: none;
+}
 
+.page-link{
+  width: 65px;
+
+  /* background-color: #61dafb; */
+  text-align: center;
+}
+a {
+  text-decoration: none;
+  letter-spacing: 2rem;
+
+  color: rgb(161, 31, 31);
+  float: left;
+  padding: 8px 16px;
+  
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
