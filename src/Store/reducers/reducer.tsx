@@ -1,5 +1,4 @@
-import { Action } from "../action";
-import { ActionType } from "../action-type";
+import * as types from "../action-type/index";
 
 
 
@@ -12,20 +11,20 @@ const initialState = {
 };
 
 
-const postReducer = (state = initialState, action:Action) => {
+const postReducer = (state = initialState, action:any) => {
     switch (action.type) {
-        case ActionType.FETCH_POST_START:
+        case types.FETCH_POST_START:
             return {
                 ...state,
                 loading: true
             };
-        case ActionType.FETCH_POST_SUCCESS:
+        case types.FETCH_POST_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 posts: action.payload
             };
-        case ActionType.FETCH_POST_FAIL:
+        case types.FETCH_POST_FAIL:
             return {
                 ...state,
                 loading: false,
@@ -35,5 +34,15 @@ const postReducer = (state = initialState, action:Action) => {
             return state;
     }
 };
-     
+// export const Pagination = (state=initialState, action)=>{
+//     switch( action.type){
+//         case types.NEW_PAGE:
+//             return{
+//                 ...state,
+//                 posts:action.payload.length,
+            
+//             }
+
+//         }
+//     }        
 export default postReducer;
