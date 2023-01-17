@@ -1,6 +1,6 @@
-*{
-  margin: 0px;
-  padding: 0px;
+.container{
+  align-content: center;
+
 }
 .App {
   text-align: center;
@@ -8,10 +8,10 @@
 .card_size{
   padding: 2px;
   margin: 8px;
-  height: 40vh;
+  height: 36vh;
   width: 20vw;
-  border: 2px solid #a0a6bb;
-  background-color: #ddf0ed;
+  /* border: 2px solid #a0a6bb; */
+  background-color: #f1f5f4;
  transition: all .2s ease-in-out ;
  animation: bounce 1s infinite alternate;
 }
@@ -32,13 +32,13 @@
 }
 
 .Pagination {
+  border: 2px solid rebeccapurple;
   display: inline-flex;
   list-style: none;
 }
 .btn{
   width: 65px;
   margin-right: 10px;
-  letter-spacing:0;
   border-radius:10px;
   background-color: #041f7a;
   color: wheat;
@@ -56,15 +56,13 @@
 }
 a {
   text-decoration: none;
-  letter-spacing: 2rem;
-
   color: rgb(161, 31, 31);
   float: left;
   padding: 8px 16px;
   
 }
 .App-header {
-  background-color: #282c34;
+  background-color: #5d84d3c0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
