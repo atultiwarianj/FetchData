@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import postReducer from "./reducer";
 const rootReducer = combineReducers({
-    data:postReducer,
-    // Pagination:Pagination,
+    data: postReducer,
+
 
 });
 export default rootReducer;

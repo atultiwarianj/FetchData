@@ -1,25 +1,31 @@
-import React from 'react'
+import React from "react";
+import "./Card.css"
 
 interface IProps {
-    userId: number,
-    id: number,
-    title: string,
-    body: string
-  }
+  userId: number;
+  id: number;
+  title: string;
+  url: string;
+  thumbnailUrl: string;
+}
 
-const Card = (props:IProps) => {
+
+
+const Card = (props: IProps) => {
   return (
     <>
-
-                <div className='card'>
-                  <div className='card-body'>
-                    <h4>#{props.id}.{props.title}</h4>
-                    <p>{props.body}</p>
-                  </div>
-                </div>
-
+      <div className="card ">
+        <div className="card-body ">
+          <div className="header">
+          <h6>
+            #{props.id}.{props.title}
+          </h6>
+          </div>
+          <img src= {props.thumbnailUrl}  alt="image" />
+        </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
 export default Card;

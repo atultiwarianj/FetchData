@@ -7,10 +7,11 @@ import { Dispatch } from "redux";
 import Card from "./component/Card";
 
 interface IProps {
-  userId: number;
+  albumId: number;
   id: number;
   title: string;
-  body: string;
+  url: string;
+  thumbnailUrl: string;
 }
 
 const App = () => {
@@ -58,18 +59,19 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="container py-4">
+      <div className="container ">
         <div className="row">
           {posts
             .slice(pagination.start, pagination.end)
             .map((posts: IProps) => {
               return (
-                <div className="col-md-3 md-3" key={posts.id}>
+                <div className=" card_size" key={posts.id}>
                   <Card
-                    userId={posts.userId}
+                    userId={posts.albumId}
                     id={posts.id}
                     title={posts.title}
-                    body={posts.body}
+                    url={posts.url}
+                    thumbnailUrl={posts.thumbnailUrl}
                   />
                 </div>
               );
@@ -79,12 +81,12 @@ const App = () => {
             <nav aria-label="Page navigation example">
               <ul className="pagination">
                 <li className="page-item">
-                  {" "}
+                
                   <button
-                    className="btn btn-primary"
+                    className="btn"
                     onClick={() => onButtonClick("prev")}
                   >
-                    previous
+                    prev
                   </button>
                 </li>
 
@@ -106,13 +108,12 @@ const App = () => {
                     </li>
                   ))}
                 <li className="page-item">
-                  {" "}
                   <button
                     className="btn btn-primary"
                     onClick={() => onButtonClick("next")}
                   >
                     Next
-                  </button>{" "}
+                  </button>
                 </li>
               </ul>
             </nav>
